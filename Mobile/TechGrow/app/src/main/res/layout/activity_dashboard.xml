@@ -288,7 +288,7 @@
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -325,6 +325,7 @@
                                 android:textSize="16dp"/>
 
                             <TextView
+                                android:id="@+id/dashboardSoilMoistureText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -375,6 +376,7 @@
                                 android:textSize="16dp"/>
 
                             <TextView
+                                android:id="@+id/dashboardHumidityText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -425,6 +427,7 @@
                                 android:textSize="16dp"/>
 
                             <TextView
+                                android:id="@+id/dashboardTemperatureText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -451,7 +454,7 @@
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -825,7 +828,7 @@
                             android:gravity="center">
 
                             <SeekBar
-                                android:id="@+id/whetherSeeker"
+                                android:id="@+id/temperatureSeeker"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:progress="50"

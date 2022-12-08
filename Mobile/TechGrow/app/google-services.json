@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "111189645641",
+    "project_id": "techgrow-d6fd7",
+    "storage_bucket": "techgrow-d6fd7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111189645641:android:d316b636c8c01d64706298",
+        "android_client_info": {
+          "package_name": "com.example.techgrow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111189645641-kt0408pftuka2iv2bbi488ndsjk72fko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD02LcoVNgFs_WzanvLkAcuQcTreQnSpt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111189645641-kt0408pftuka2iv2bbi488ndsjk72fko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
