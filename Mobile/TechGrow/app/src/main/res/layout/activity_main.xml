@@ -1,18 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_1"
+    android:gravity="center"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="Welcome to"
+            android:textColor="@color/dark_gray0"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="serif"
+            android:text="TechGrow"
+            android:textColor="@color/dark_gray0"
+            android:textSize="28dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:fontFamily="sans-serif-thin"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="IoT Application for Implementation of Smart Farming System."
+            android:textColor="@color/dark_gray1"
+            android:textSize="14dp" />
+
+        <soup.neumorphism.NeumorphButton
+            style="@style/Widget.Neumorph.Button"
+            android:id="@+id/btnNext"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="Enter"
+            android:textColor="@color/black"
+            app:neumorph_shapeType="flat"
+            app:neumorph_lightSource="leftTop"
+            app:backgroundTint="@null"
+            app:neumorph_backgroundColor="@color/neon1"
+            app:neumorph_shapeAppearance="@style/CustomButtonShapeAppearance"
+            app:neumorph_shadowColorLight="@color/neon4"
+            app:neumorph_shadowColorDark="@color/neon5"/>
+
+    </LinearLayout>
+
+</LinearLayout>

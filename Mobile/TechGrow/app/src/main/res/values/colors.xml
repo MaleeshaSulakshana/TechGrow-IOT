@@ -7,4 +7,62 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="gray0">#e7eff9</color>
+    <color name="gray1">#e8f0f9</color>
+    <color name="gray2">#f1f6fc</color>
+    <color name="gray3">#d1dbe8</color>
+    <color name="gray4">#b6bcca</color>
+    <color name="gray5">#d2d7e1</color>
+
+    <color name="dark_blue0">#344462</color>
+
+    <color name="dark_gray0">#2d3637</color>
+    <color name="dark_gray1">#494b4d</color>
+
+    <color name="neon1">#e3e6ec</color>
+    <color name="neon2">#b5dee6</color>
+    <color name="neon3">#d6d9e0</color>
+    <color name="neon4">#f6f7f8</color>
+    <color name="neon5">#d0d3db</color>
+    <color name="neon6">#2eb6c7</color>
+    <color name="neon7">#f1fbfb</color>
+    <color name="neon8">#bee1e7</color>
+    <color name="neon9">#f5f8f9</color>
+    <color name="neon10">#d3e5ea</color>
+    <color name="neon11">#f9f9fa</color>
+    <color name="neon12">#35b5c6</color>
+    <color name="neon13">#a2dbdd</color>
+    <color name="neon14">#ebedf1</color>
+    <color name="neon15">#f5f8fa</color>
+    <color name="neon16">#b3dfe5</color>
+
+    <color name="yellow0">#E0E722</color>
+
+    <!--    <color name="lite_green">#D4F582</color>-->
+<!--    <color name="lite_green2">#E5F6DF</color>-->
+<!--    <color name="green">#3ED400</color>-->
+
+<!--    <color name="gray0">#F0F1F1</color>-->
+<!--    <color name="gray1">#F1F1F1</color>-->
+<!--    <color name="gray2">#5c6065</color>-->
+<!--    <color name="gray3">#484a4d</color>-->
+<!--    <color name="gray4">#B8BEBD</color>-->
+<!--    <color name="gray5">#9ca5b5</color>-->
+
+<!--    <color name="gray6">#ebf3fa</color>-->
+<!--    <color name="gray7">#acb7c3</color>-->
+<!--    <color name="gray8">#b7c1cd</color>-->
+<!--    <color name="gray9">#dbe5f1</color>-->
+
+<!--    <color name="red1">#FF6724</color>-->
+
+<!--    <color name="black1">#353B3D</color>-->
+<!--    <color name="black2">#43494B</color>-->
+<!--    <color name="black3">#2a2a2b</color>-->
+<!--    <color name="black4">#4b4c4d</color>-->
+<!--    <color name="black5">#475968</color>-->
+
+<!--    <color name="blue1">#425464</color>-->
+
 </resources>
