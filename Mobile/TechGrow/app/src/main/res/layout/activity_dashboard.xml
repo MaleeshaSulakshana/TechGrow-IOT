@@ -33,7 +33,7 @@
                 android:textColor="@color/dark_blue0"
                 android:textStyle="bold"
                 android:fontFamily="serif"
-                android:textSize="32dp"/>
+                android:textSize="25dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -250,10 +250,11 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/iconDay"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_sunny"
-                    app:tint="@color/yellow0"/>
+                    app:tint="@color/dark_gray1"/>
 
             </LinearLayout>
 
@@ -264,6 +265,7 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/iconNight"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_brightness"
@@ -454,7 +456,7 @@
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -543,6 +545,7 @@
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtSoilCurrentValue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
@@ -571,6 +574,7 @@
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtWaterPumpStatus1"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
@@ -599,6 +603,7 @@
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtWaterPumpStatusDateTime1"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
@@ -716,6 +721,7 @@
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtHumidityCurrentValue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
@@ -744,6 +750,7 @@
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtWaterPumpStatus2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
@@ -772,6 +779,7 @@
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtWaterPumpStatusDateTime2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
@@ -895,21 +903,13 @@
                                     android:gravity="right">
 
                                     <TextView
+                                        android:id="@+id/txtTemperatureCurrentValue"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:gravity="right"
                                         android:text="1750"
                                         android:textColor="@color/neon12"
                                         android:textStyle="bold"
-                                        android:fontFamily="serif"
-                                        android:textSize="25dp"/>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text=" \u2103"
-                                        android:textColor="@color/neon12"
-                                        android:textStyle="normal"
                                         android:fontFamily="serif"
                                         android:textSize="25dp"/>
 
@@ -927,13 +927,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Window Open :"
+                                    android:text="Window :"
                                     android:textColor="@color/dark_blue0"
                                     android:textStyle="normal"
                                     android:fontFamily="serif"
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtWindowStatus"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
@@ -955,14 +956,14 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Window Opened Time :"
+                                    android:text="Window Opened/Closed Time :"
                                     android:textColor="@color/dark_blue0"
                                     android:textStyle="normal"
                                     android:fontFamily="serif"
-                                    android:singleLine="true"
                                     android:textSize="20dp"/>
 
                                 <TextView
+                                    android:id="@+id/txtWindowStatusDateTime"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"

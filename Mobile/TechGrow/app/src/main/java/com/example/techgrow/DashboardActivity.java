@@ -25,20 +25,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import soup.neumorphism.NeumorphCardView;
 
 public class DashboardActivity extends AppCompatActivity {
 
     private NeumorphCardView btnTurnOnCard, btnSoilMoistureCard, btnHumidityCard, btnTemperatureCard;
-    private ImageView btnTurnOnCardIcon, btnSoilMoistureCardIcon, btnHumidityCardIcon1, btnHumidityCardIcon2, btnTemperatureCardIcon;
+    private ImageView btnTurnOnCardIcon, btnSoilMoistureCardIcon, btnHumidityCardIcon1, btnHumidityCardIcon2, btnTemperatureCardIcon,
+            iconDay, iconNight;
 
     private LinearLayout layoutDashboard, layoutSoilMoisture, layoutHumidity, layoutTemperature;
-    private TextView dashboardSoilMoistureText, dashboardHumidityText, dashboardTemperatureText,
-            txtSeekerSoilValue, txtSeekerHumidityValue, txtSeekerTemperatureValue;
     private SeekBar soilMoistureSeeker, humiditySeeker, temperatureSeeker;
+
+    private TextView todayDate, dashboardSoilMoistureText, dashboardHumidityText, dashboardTemperatureText,
+            txtSeekerSoilValue, txtSeekerHumidityValue, txtSeekerTemperatureValue,
+            txtSoilCurrentValue, txtHumidityCurrentValue, txtTemperatureCurrentValue,
+            txtWaterPumpStatus1, txtWaterPumpStatus2, txtWindowStatus,
+            txtWaterPumpStatusDateTime1, txtWaterPumpStatusDateTime2, txtWindowStatusDateTime;
 
     private String deviceIsOn = "Off";
     private int soilMoistureSeekValue = 0, humiditySeekValue = 0, temperatureSeekValue = 0;
+    private int soilMoistureCurrentValue = 0, humidityCurrentValue = 0, temperatureCurrentValue = 0;
 
     private DatabaseReference databaseReference;
 
@@ -47,21 +57,30 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+//        NeumorphCardView
         btnTurnOnCard = (NeumorphCardView) this.findViewById(R.id.btnTurnOnCard);
         btnSoilMoistureCard = (NeumorphCardView) this.findViewById(R.id.btnSoilMoistureCard);
         btnHumidityCard = (NeumorphCardView) this.findViewById(R.id.btnHumidityCard);
         btnTemperatureCard = (NeumorphCardView) this.findViewById(R.id.btnTemperatureCard);
 
+//        ImageView
         btnTurnOnCardIcon = (ImageView) this.findViewById(R.id.btnTurnOnCardIcon);
         btnSoilMoistureCardIcon = (ImageView) this.findViewById(R.id.btnSoilMoistureCardIcon);
         btnHumidityCardIcon1 = (ImageView) this.findViewById(R.id.btnHumidityCardIcon1);
         btnHumidityCardIcon2 = (ImageView) this.findViewById(R.id.btnHumidityCardIcon2);
         btnTemperatureCardIcon = (ImageView) this.findViewById(R.id.btnTemperatureCardIcon);
 
+        iconDay = (ImageView) this.findViewById(R.id.iconDay);
+        iconNight = (ImageView) this.findViewById(R.id.iconNight);
+
+//        LinearLayout
         layoutDashboard = (LinearLayout) this.findViewById(R.id.layoutDashboard);
         layoutSoilMoisture = (LinearLayout) this.findViewById(R.id.layoutSoilMoisture);
         layoutHumidity = (LinearLayout) this.findViewById(R.id.layoutHumidity);
         layoutTemperature = (LinearLayout) this.findViewById(R.id.layoutTemperature);
+
+//        TextView
+        todayDate = (TextView) this.findViewById(R.id.todayDate);
 
         dashboardSoilMoistureText = (TextView) this.findViewById(R.id.dashboardSoilMoistureText);
         dashboardHumidityText = (TextView) this.findViewById(R.id.dashboardHumidityText);
@@ -71,6 +90,19 @@ public class DashboardActivity extends AppCompatActivity {
         txtSeekerHumidityValue = (TextView) this.findViewById(R.id.txtSeekerHumidityValue);
         txtSeekerTemperatureValue = (TextView) this.findViewById(R.id.txtSeekerTemperatureValue);
 
+        txtSoilCurrentValue = (TextView) this.findViewById(R.id.txtSoilCurrentValue);
+        txtHumidityCurrentValue = (TextView) this.findViewById(R.id.txtHumidityCurrentValue);
+        txtTemperatureCurrentValue = (TextView) this.findViewById(R.id.txtTemperatureCurrentValue);
+
+        txtWaterPumpStatus1 = (TextView) this.findViewById(R.id.txtWaterPumpStatus1);
+        txtWaterPumpStatus2 = (TextView) this.findViewById(R.id.txtWaterPumpStatus2);
+        txtWindowStatus = (TextView) this.findViewById(R.id.txtWindowStatus);
+
+        txtWaterPumpStatusDateTime1 = (TextView) this.findViewById(R.id.txtWaterPumpStatusDateTime1);
+        txtWaterPumpStatusDateTime2 = (TextView) this.findViewById(R.id.txtWaterPumpStatusDateTime2);
+        txtWindowStatusDateTime = (TextView) this.findViewById(R.id.txtWindowStatusDateTime);
+
+//        SeekBar
         soilMoistureSeeker = (SeekBar) this.findViewById(R.id.soilMoistureSeeker);
         humiditySeeker = (SeekBar) this.findViewById(R.id.humiditySeeker);
         temperatureSeeker = (SeekBar) this.findViewById(R.id.temperatureSeeker);
@@ -78,12 +110,19 @@ public class DashboardActivity extends AppCompatActivity {
 //        Firebase
         databaseReference = FirebaseDatabase.getInstance().getReference("TechGrow");
 
+        Date input = Calendar.getInstance().getTime();
+        todayDate.setText(android.text.format.DateFormat.format("EEEE", input));
+
         showDashboardLayout();
         setValuesFromDatabase();
 
-        dashboardSoilMoistureText.setText(String.valueOf(soilMoistureSeekValue));
-        dashboardHumidityText.setText(String.valueOf(humiditySeekValue));
-        dashboardTemperatureText.setText(String.valueOf(temperatureSeekValue) + " \u2103");
+        dashboardSoilMoistureText.setText(String.valueOf(soilMoistureCurrentValue));
+        dashboardHumidityText.setText(String.valueOf(humidityCurrentValue));
+        dashboardTemperatureText.setText(String.valueOf(temperatureCurrentValue) + " \u2103");
+
+        txtSoilCurrentValue.setText(String.valueOf(soilMoistureCurrentValue));
+        txtHumidityCurrentValue.setText(String.valueOf(humidityCurrentValue));
+        txtTemperatureCurrentValue.setText(String.valueOf(temperatureCurrentValue) + " \u2103");
 
         txtSeekerSoilValue.setText(String.valueOf(soilMoistureSeekValue));
         txtSeekerHumidityValue.setText(String.valueOf(humiditySeekValue));
@@ -340,6 +379,24 @@ public class DashboardActivity extends AppCompatActivity {
                         }
                     }
 
+                    if (snapshot.child("DayOrNight").exists()) {
+                        if (snapshot.child("DayOrNight").exists()) {
+
+                            String dayOrNight = snapshot.child("DayOrNight").getValue().toString();
+
+                            if (dayOrNight.equals("Day")) {
+
+                                iconDay.setColorFilter(iconDay.getContext().getResources().getColor(R.color.yellow0));
+                                iconNight.setColorFilter(iconNight.getContext().getResources().getColor(R.color.dark_gray1));
+                            } else {
+
+                                iconDay.setColorFilter(iconDay.getContext().getResources().getColor(R.color.dark_gray1));
+                                iconNight.setColorFilter(iconNight.getContext().getResources().getColor(R.color.yellow0));
+                            }
+
+                        }
+                    }
+
                     if (snapshot.child("SoilMoisture").exists()) {
                         if (snapshot.child("SoilMoisture").child("DetectLine").exists()) {
 
@@ -347,7 +404,13 @@ public class DashboardActivity extends AppCompatActivity {
 //                            dashboardSoilMoistureText.setText(String.valueOf(soilMoistureSeekValue));
                             txtSeekerSoilValue.setText(String.valueOf(soilMoistureSeekValue));
                             soilMoistureSeeker.setProgress(soilMoistureSeekValue);
+                        }
 
+                        if (snapshot.child("SoilMoisture").child("CurrentValue").exists()) {
+
+                            soilMoistureCurrentValue = Integer.valueOf(snapshot.child("SoilMoisture").child("CurrentValue").getValue().toString());
+                            dashboardSoilMoistureText.setText(String.valueOf(soilMoistureSeekValue));
+                            txtSoilCurrentValue.setText(String.valueOf(soilMoistureSeekValue));
                         }
                     }
 
@@ -357,7 +420,13 @@ public class DashboardActivity extends AppCompatActivity {
                             humiditySeekValue = Integer.valueOf(snapshot.child("Humidity").child("DetectLine").getValue().toString());
                             txtSeekerHumidityValue.setText(String.valueOf(humiditySeekValue));
                             humiditySeeker.setProgress(humiditySeekValue);
+                        }
 
+                        if (snapshot.child("Humidity").child("CurrentValue").exists()) {
+
+                            humidityCurrentValue = Integer.valueOf(snapshot.child("Humidity").child("CurrentValue").getValue().toString());
+                            dashboardHumidityText.setText(String.valueOf(humidityCurrentValue));
+                            txtHumidityCurrentValue.setText(String.valueOf(humidityCurrentValue));
                         }
                     }
 
@@ -369,7 +438,47 @@ public class DashboardActivity extends AppCompatActivity {
                             temperatureSeeker.setProgress(temperatureSeekValue);
 
                         }
+
+                        if (snapshot.child("Temperature").child("CurrentValue").exists()) {
+
+                            temperatureCurrentValue = Integer.valueOf(snapshot.child("Temperature").child("CurrentValue").getValue().toString());
+                            dashboardTemperatureText.setText(String.valueOf(temperatureCurrentValue) + " \u2103");
+                            txtTemperatureCurrentValue.setText(String.valueOf(temperatureCurrentValue) + " \u2103");
+                        }
                     }
+
+                    if (snapshot.child("Actuator").exists()) {
+                        if (snapshot.child("Actuator").child("WaterPump").exists()) {
+                            if (snapshot.child("Actuator").child("WaterPump").child("Status").exists()) {
+
+                            String waterPumpStatus = snapshot.child("Actuator").child("WaterPump").child("Status").getValue().toString();
+                            txtWaterPumpStatus1.setText(waterPumpStatus);
+                            txtWaterPumpStatus2.setText(waterPumpStatus);
+                            }
+
+                            if (snapshot.child("Actuator").child("WaterPump").child("DateTime").exists()) {
+
+                                String waterPumpStatusDateTime = snapshot.child("Actuator").child("WaterPump").child("DateTime").getValue().toString();
+                                txtWaterPumpStatusDateTime1.setText(waterPumpStatusDateTime);
+                                txtWaterPumpStatusDateTime2.setText(waterPumpStatusDateTime);
+                            }
+                        }
+
+                        if (snapshot.child("Actuator").child("Window").exists()) {
+                            if (snapshot.child("Actuator").child("Window").child("Status").exists()) {
+
+                                String windowStatus = snapshot.child("Actuator").child("Window").child("Status").getValue().toString();
+                                txtWindowStatus.setText(windowStatus);
+                            }
+
+                            if (snapshot.child("Actuator").child("Window").child("DateTime").exists()) {
+
+                                String windowStatusDateTime = snapshot.child("Actuator").child("Window").child("DateTime").getValue().toString();
+                                txtWindowStatusDateTime.setText(windowStatusDateTime);
+                            }
+                        }
+                    }
+
                 }
 
             }
