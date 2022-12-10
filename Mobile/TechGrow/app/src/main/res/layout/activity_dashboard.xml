@@ -586,35 +586,6 @@
 
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:orientation="vertical"
-                                android:gravity="left">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Last Water Pumped :"
-                                    android:textColor="@color/dark_blue0"
-                                    android:textStyle="normal"
-                                    android:fontFamily="serif"
-                                    android:textSize="20dp"/>
-
-                                <TextView
-                                    android:id="@+id/txtWaterPumpStatusDateTime1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="right"
-                                    android:text="2022-12-07 11:50"
-                                    android:textColor="@color/dark_gray1"
-                                    android:textStyle="bold"
-                                    android:fontFamily="serif"
-                                    android:textSize="22dp"/>
-
-                            </LinearLayout>
-
                         </LinearLayout>
 
                     </LinearLayout>
@@ -759,35 +730,6 @@
                                     android:textStyle="bold"
                                     android:fontFamily="serif"
                                     android:textSize="25dp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:orientation="vertical"
-                                android:gravity="left">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Last Water Pumped :"
-                                    android:textColor="@color/dark_blue0"
-                                    android:textStyle="normal"
-                                    android:fontFamily="serif"
-                                    android:textSize="20dp"/>
-
-                                <TextView
-                                    android:id="@+id/txtWaterPumpStatusDateTime2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="right"
-                                    android:text="2022-12-07 11:50"
-                                    android:textColor="@color/dark_gray1"
-                                    android:textStyle="bold"
-                                    android:fontFamily="serif"
-                                    android:textSize="22dp"/>
 
                             </LinearLayout>
 
@@ -943,35 +885,6 @@
                                     android:textStyle="bold"
                                     android:fontFamily="serif"
                                     android:textSize="25dp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:orientation="vertical"
-                                android:gravity="left">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Window Opened/Closed Time :"
-                                    android:textColor="@color/dark_blue0"
-                                    android:textStyle="normal"
-                                    android:fontFamily="serif"
-                                    android:textSize="20dp"/>
-
-                                <TextView
-                                    android:id="@+id/txtWindowStatusDateTime"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="right"
-                                    android:text="2022-12-07 11:50"
-                                    android:textColor="@color/dark_gray1"
-                                    android:textStyle="bold"
-                                    android:fontFamily="serif"
-                                    android:textSize="22dp"/>
 
                             </LinearLayout>
 

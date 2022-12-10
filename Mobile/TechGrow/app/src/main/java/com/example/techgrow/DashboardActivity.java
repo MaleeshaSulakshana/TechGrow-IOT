@@ -43,8 +43,7 @@ public class DashboardActivity extends AppCompatActivity {
     private TextView todayDate, dashboardSoilMoistureText, dashboardHumidityText, dashboardTemperatureText,
             txtSeekerSoilValue, txtSeekerHumidityValue, txtSeekerTemperatureValue,
             txtSoilCurrentValue, txtHumidityCurrentValue, txtTemperatureCurrentValue,
-            txtWaterPumpStatus1, txtWaterPumpStatus2, txtWindowStatus,
-            txtWaterPumpStatusDateTime1, txtWaterPumpStatusDateTime2, txtWindowStatusDateTime;
+            txtWaterPumpStatus1, txtWaterPumpStatus2, txtWindowStatus;
 
     private String deviceIsOn = "Off";
     private int soilMoistureSeekValue = 0, humiditySeekValue = 0, temperatureSeekValue = 0;
@@ -97,10 +96,6 @@ public class DashboardActivity extends AppCompatActivity {
         txtWaterPumpStatus1 = (TextView) this.findViewById(R.id.txtWaterPumpStatus1);
         txtWaterPumpStatus2 = (TextView) this.findViewById(R.id.txtWaterPumpStatus2);
         txtWindowStatus = (TextView) this.findViewById(R.id.txtWindowStatus);
-
-        txtWaterPumpStatusDateTime1 = (TextView) this.findViewById(R.id.txtWaterPumpStatusDateTime1);
-        txtWaterPumpStatusDateTime2 = (TextView) this.findViewById(R.id.txtWaterPumpStatusDateTime2);
-        txtWindowStatusDateTime = (TextView) this.findViewById(R.id.txtWindowStatusDateTime);
 
 //        SeekBar
         soilMoistureSeeker = (SeekBar) this.findViewById(R.id.soilMoistureSeeker);
@@ -401,7 +396,6 @@ public class DashboardActivity extends AppCompatActivity {
                         if (snapshot.child("SoilMoisture").child("DetectLine").exists()) {
 
                             soilMoistureSeekValue = Integer.valueOf(snapshot.child("SoilMoisture").child("DetectLine").getValue().toString());
-//                            dashboardSoilMoistureText.setText(String.valueOf(soilMoistureSeekValue));
                             txtSeekerSoilValue.setText(String.valueOf(soilMoistureSeekValue));
                             soilMoistureSeeker.setProgress(soilMoistureSeekValue);
                         }
@@ -409,8 +403,8 @@ public class DashboardActivity extends AppCompatActivity {
                         if (snapshot.child("SoilMoisture").child("CurrentValue").exists()) {
 
                             soilMoistureCurrentValue = Integer.valueOf(snapshot.child("SoilMoisture").child("CurrentValue").getValue().toString());
-                            dashboardSoilMoistureText.setText(String.valueOf(soilMoistureSeekValue));
-                            txtSoilCurrentValue.setText(String.valueOf(soilMoistureSeekValue));
+                            dashboardSoilMoistureText.setText(String.valueOf(soilMoistureCurrentValue));
+                            txtSoilCurrentValue.setText(String.valueOf(soilMoistureCurrentValue));
                         }
                     }
 
@@ -455,13 +449,6 @@ public class DashboardActivity extends AppCompatActivity {
                             txtWaterPumpStatus1.setText(waterPumpStatus);
                             txtWaterPumpStatus2.setText(waterPumpStatus);
                             }
-
-                            if (snapshot.child("Actuator").child("WaterPump").child("DateTime").exists()) {
-
-                                String waterPumpStatusDateTime = snapshot.child("Actuator").child("WaterPump").child("DateTime").getValue().toString();
-                                txtWaterPumpStatusDateTime1.setText(waterPumpStatusDateTime);
-                                txtWaterPumpStatusDateTime2.setText(waterPumpStatusDateTime);
-                            }
                         }
 
                         if (snapshot.child("Actuator").child("Window").exists()) {
@@ -471,11 +458,6 @@ public class DashboardActivity extends AppCompatActivity {
                                 txtWindowStatus.setText(windowStatus);
                             }
 
-                            if (snapshot.child("Actuator").child("Window").child("DateTime").exists()) {
-
-                                String windowStatusDateTime = snapshot.child("Actuator").child("Window").child("DateTime").getValue().toString();
-                                txtWindowStatusDateTime.setText(windowStatusDateTime);
-                            }
                         }
                     }
 

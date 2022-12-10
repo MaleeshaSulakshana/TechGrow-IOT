@@ -1,0 +1,26 @@
+{
+  "TechGrow": {
+    "Actuator": {
+      "WaterPump": {
+        "Status": "Off"
+      },
+      "Window": {
+        "Status": "Off"
+      }
+    },
+    "DayOrNight": "Night",
+    "Device": "On",
+    "Humidity": {
+      "CurrentValue": 94,
+      "DetectLine": 75
+    },
+    "SoilMoisture": {
+      "CurrentValue": 50,
+      "DetectLine": 57
+    },
+    "Temperature": {
+      "CurrentValue": 25,
+      "DetectLine": 46
+    }
+  }
+}
