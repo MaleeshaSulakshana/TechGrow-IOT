@@ -4,8 +4,8 @@
 
 #define FIREBASE_HOST "techgrow-d6fd7-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "BH2R1URdnb96RxGcSgGQmD9GMUb31OLGc6mZGzR1"
-#define WIFI_SSID "SLT_FIBER"
-#define WIFI_PASSWORD "shadow9805"
+#define WIFI_SSID "SLT-4G_16D5AA"
+#define WIFI_PASSWORD "A5DF3CEB"
 
 #define DHTPIN 4  // Connect Data pin of DHT to D2
 
