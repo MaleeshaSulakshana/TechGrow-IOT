@@ -1,13 +1,15 @@
+// Import libraries
 #include "FirebaseESP32.h"
 #include <WiFi.h>
 #include <DHT.h>
 
+// Define variables
 #define FIREBASE_HOST "techgrow-d6fd7-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "BH2R1URdnb96RxGcSgGQmD9GMUb31OLGc6mZGzR1"
 #define WIFI_SSID "SLT-4G_16D5AA"
 #define WIFI_PASSWORD "A5DF3CEB"
 
-#define DHTPIN 4  // Connect Data pin of DHT to D2
+#define DHTPIN 4  // Connect Data pin of DHT to D4
 
 // Set pins to sensors and actuators
 int led_device_on = 5;
@@ -59,6 +61,7 @@ void setup() {
   Firebase.reconnectWiFi(true);
 }
 
+// For get humidity sensor updates
 void humidity_sensor_update() {
 
   humidityValue = dht.readHumidity();
@@ -82,7 +85,7 @@ void humidity_sensor_update() {
   }
 }
 
-
+// For get ldr sensor updates
 void ldr_sensor_update() {
 
   int temp = digitalRead(ldr_sensor);
@@ -103,6 +106,7 @@ void ldr_sensor_update() {
   }
 }
 
+// For get soil moisture sensor updates
 void soil_moisture_sensor_update() {
 
   soilMoistureValue = (100 - ((analogRead(soil_moisture_sensor) / 1023.00) * 100));
@@ -115,6 +119,7 @@ void soil_moisture_sensor_update() {
   
 }
 
+// For check sensor values and detect lines and activate actuators
 void update_actuators() {
 
   if (Firebase.getInt(firebaseData, "/TechGrow/Temperature/DetectLine")) {
@@ -180,6 +185,7 @@ void update_actuators() {
 
 void loop() {
   
+//   Check device is on and run functions
   if (Firebase.getString(firebaseData, "/TechGrow/Device")) {
 
     if (firebaseData.stringData() == "On") {
@@ -192,7 +198,14 @@ void loop() {
       update_actuators();
 
     } else if (firebaseData.stringData() == "Off") {
+      
+//       Set all actuators off
       digitalWrite(led_device_on, LOW);
+      digitalWrite(led_day_or_night, LOW);
+      digitalWrite(led_water_pump_indicator, LOW);
+      digitalWrite(relay_water_pump, LOW);
+      digitalWrite(relay_window_fan, LOW);
+      
     }
   }
 }
